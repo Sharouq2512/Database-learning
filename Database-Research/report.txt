@@ -1,0 +1,50 @@
+Comparison: Flat File Systems vs. Relational Databases
+
+1. Structure
+
+Flat File Systems
+A flat file stores data in a plain, simple structure—often in formats like .txt, .csv, or .dat. All information is kept in a single file or a small set of files with no separation by entity or type. Each record is usually stored as a line of text, and fields are separated by commas, tabs, or fixed-width spacing. There is no enforced schema.
+
+Relational Databases
+A relational database organizes data into multiple tables, each representing a specific entity (e.g., Customers, Orders, Products). Each table has defined columns and a structured schema that ensures data types and rules. The system supports keys (primary and foreign keys) to enforce integrity.
+
+2. Data Redundancy
+
+Flat File Systems
+Redundancy is high because the same piece of data may appear in many files or many lines. For example, a customer name may be repeated in every transaction record. There is no mechanism to prevent duplicated data.
+
+Relational Databases
+Redundancy is low because data is normalized across tables. Information is stored once—such as a customer's details—and referenced through keys. This reduces inconsistencies and improves integrity.
+
+3. Relationships
+
+Flat File Systems
+There is no direct support for relationships between data sets. Any associations (such as linking a purchase to a customer) must be handled manually in the application’s code. This makes relationship management difficult and error-prone.
+
+Relational Databases
+Relationship management is built-in. Tables can be linked through primary keys and foreign keys. Databases enforce referential integrity, ensuring that related data remains consistent (e.g., an order must belong to an existing customer).
+
+4. Example Usage
+
+Flat File Systems
+Used for small-scale or simple storage needs such as configuration files, log files, contact lists, or exporting/importing data. Ideal when the data volume is low and relationships are minimal or unnecessary.
+
+Relational Databases
+Used in systems that require complex queries, secure storage, multi-user access, and relationship-heavy data. Examples include banking systems, hospital systems, hotel booking systems, online stores, and enterprise applications.
+
+5. Drawbacks
+
+Flat File Systems
+– No support for complex queries or relationships
+– High redundancy leading to inconsistencies
+– Hard to maintain as data grows
+– Poor performance with large datasets
+– Limited security and access control
+– Difficult multi-user support
+
+Relational Databases
+– Requires more setup and administrative effort
+– Can be slower for extremely simple operations compared to flat files
+– Needs more storage due to metadata and indexing
+– Requires database knowledge and maintenance
+– May become costly depending on size and licensing
