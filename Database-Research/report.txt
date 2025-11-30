@@ -154,3 +154,160 @@ Analyze trends and support data-driven decision-making
 Optimize reporting performance and data models
 
 Focus: Turning data into insights and decisions.
+--------------------------------------------------------------------------------
+Types of Databases
+1. Relational vs Non-Relational Databases
+Relational Databases (RDBMS)
+
+Relational databases store data in tables with predefined schemas (rows and columns).
+They use SQL for querying and support strong relationships between data using primary and foreign keys.
+
+Examples:
+
+MySQL
+
+PostgreSQL
+
+Oracle
+
+SQL Server
+
+Strengths:
+
+Structured data
+
+Strong consistency
+
+Good for complex queries and relationships
+
+Use Cases:
+
+Banking systems
+
+ERP systems
+
+Hospital management
+
+E-commerce transactions
+
+Non-Relational Databases (NoSQL)
+
+Non-relational databases store data in flexible formats like documents, key-value pairs, graphs, or columns.
+They do not require a fixed schema and scale horizontally.
+
+Common Types:
+
+Document Stores: MongoDB
+
+Column Stores: Cassandra
+
+Key-Value Stores: Redis
+
+Graph Databases: Neo4j
+
+Strengths:
+
+High scalability
+
+Flexible structure
+
+Handles unstructured or semi-structured data
+
+Use Cases:
+
+Social media feeds
+
+Big data applications
+
+IoT sensor data
+
+Real-time analytics
+
+2. Centralized vs Distributed vs Cloud Databases
+Centralized Database
+
+All data is stored in a single central location, usually on one server.
+
+Strengths:
+
+Easy to manage
+
+Strong control and security
+
+Simpler backup
+
+Weakness:
+
+Single point of failure
+
+May not scale well
+
+Use Cases:
+
+Small businesses
+
+Local office applications
+
+Simple internal systems
+
+Distributed Database
+
+Data is stored across multiple locations/servers connected through a network.
+Can use replication (copying data) or partitioning (splitting data).
+
+Strengths:
+
+Higher availability
+
+Faster access from different regions
+
+Better fault tolerance
+
+Weaknesses:
+
+More complex management
+
+Network issues affect performance
+
+Use Cases:
+
+Global e-commerce platforms
+
+Banking networks across branches
+
+Telecom systems
+
+Cloud Databases
+
+Databases hosted and managed on cloud platforms like AWS, Azure, or Google Cloud.
+They can be relational or non-relational.
+
+Examples:
+
+Amazon RDS / DynamoDB
+
+Google Cloud SQL / Firestore
+
+Azure SQL Database
+
+Strengths:
+
+Highly scalable
+
+Pay-as-you-go
+
+Automatic backups and maintenance
+
+Weaknesses:
+
+Depends on internet connection
+
+Ongoing cost
+
+Use Cases:
+
+Modern web apps
+
+Startups scaling quickly
+
+Mobile apps with global users
