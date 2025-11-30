@@ -463,3 +463,145 @@ Amazon RDS / Aurora (AWS)
 Google Cloud Spanner / Cloud SQL (Google Cloud)
 
 MongoDB Atlas (Cloud-based NoSQL)
+------------------------------------------------------------------------------------
+Database Engines and Languages
+1. What is a Database Engine?
+
+A database engine (also called a database management engine or storage engine) is the core software component inside a Database Management System (DBMS) that:
+
+Stores data
+
+Retrieves data
+
+Processes queries
+
+Manages transactions
+
+Ensures data integrity and security
+
+It is responsible for executing SQL commands and managing how data is written to disk, indexed, updated, or deleted.
+
+In simple words:
+A database engine is the brain of the database that processes all data operations.
+
+2. Examples of Database Engines
+
+Here are the most widely used database engines:
+
+SQL Server (Microsoft)
+
+DBMS: Microsoft SQL Server
+
+Engine: SQL Server Database Engine
+
+Language: T-SQL (Transact-SQL)
+
+MySQL (Oracle Corporation)
+
+DBMS: MySQL
+
+Engine: InnoDB (default), MyISAM, others
+
+Language: ANSI SQL (with MySQL extensions)
+
+Oracle Database
+
+DBMS: Oracle Database
+
+Engine: Oracle Database Engine
+
+Language: PL/SQL (Procedural Language/SQL)
+
+PostgreSQL
+
+DBMS: PostgreSQL
+
+Engine: PostgreSQL engine
+
+Language: PL/pgSQL + ANSI SQL
+
+3. What Languages Do They Use?
+
+Here is a quick explanation:
+
+T-SQL (Transact-SQL)
+
+Used by Microsoft SQL Server
+
+Extension of standard SQL
+
+Supports stored procedures, transactions, error handling
+
+PL/SQL (Procedural Language/SQL)
+
+Used by Oracle Database
+
+Procedural features (loops, variables) + SQL
+
+Very powerful for enterprise systems
+
+ANSI SQL (Standard SQL)
+
+Common SQL standard
+
+Used across MySQL, PostgreSQL, SQL Server, Oracle (each adds some extensions)
+
+PL/pgSQL
+
+Used by PostgreSQL
+
+Similar to Oracle’s PL/SQL
+
+Supports advanced functions and triggers
+
+4. Is There a Relationship Between the Engine and the Language?
+
+Yes — the relationship is strong.
+
+How they relate:
+
+Each database engine understands standard SQL, but also includes its own custom extensions.
+
+These extensions add features like functions, stored procedures, or transaction handling.
+
+Example:
+
+SQL Server uses T-SQL with custom functions (GETDATE(), TOP).
+
+Oracle uses PL/SQL with different syntax (SYSDATE, %TYPE).
+
+PostgreSQL has PL/pgSQL with its own features.
+
+So the engine determines which SQL dialect you must use.
+
+5. Can One Language Work Across Different Engines?
+
+Yes and No — depending on the type of SQL code.
+
+✅ Basic SQL (SELECT, INSERT, UPDATE, DELETE)
+
+Works almost everywhere because it follows ANSI SQL.
+Example:
+
+SELECT * FROM Customers;
+
+
+This works on MySQL, SQL Server, Oracle, PostgreSQL.
+
+❌ Advanced features (procedures, triggers, functions, syntax extensions)
+
+Do NOT work across engines.
+
+Examples:
+
+NVL (Oracle) vs ISNULL (SQL Server)
+
+LIMIT (MySQL, PostgreSQL) vs TOP (SQL Server)
+
+PL/SQL blocks cannot run on SQL Server
+
+T-SQL functions do not run on PostgreSQL
+
+So:
+➡ Basic SQL is portable.
+➡ Engine-specific SQL is not portable.
