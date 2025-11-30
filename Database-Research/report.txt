@@ -48,3 +48,109 @@ Relational Databases
 – Needs more storage due to metadata and indexing
 – Requires database knowledge and maintenance
 – May become costly depending on size and licensing
+
+------------------------------------------------------------------------------------
+Roles in a Database System
+1. System Analyst
+
+A System Analyst is responsible for understanding the business needs and converting them into system requirements.
+Key Responsibilities:
+
+Gather and analyze user requirements
+
+Identify data needs and system interactions
+
+Create requirement documents and system specifications
+
+Work as a bridge between business stakeholders and technical teams
+
+Ensure the final system aligns with business goals
+
+Focus: What the system should do.
+
+2. Database Designer
+
+The Database Designer creates the overall structure of the database.
+Key Responsibilities:
+
+Design the conceptual, logical, and physical data models
+
+Define entities, attributes, and relationships
+
+Ensure normalization and optimized data structure
+
+Plan constraints, keys, indexes, and schemas
+
+Ensure the database supports all system requirements
+
+Focus: How the data should be organized.
+
+3. Database Developer
+
+A Database Developer implements and builds the actual database.
+Key Responsibilities:
+
+Write SQL queries, stored procedures, triggers, and functions
+
+Create tables, views, indexes, and constraints
+
+Optimize database performance and queries
+
+Integrate the database with applications
+
+Implement business rules inside the database
+
+Focus: Building and coding the database.
+
+4. DBA (Database Administrator)
+
+The DBA is responsible for managing and maintaining the database environment.
+Key Responsibilities:
+
+Install, configure, and upgrade DBMS software
+
+Manage users, roles, and permissions
+
+Monitor performance and tune the database
+
+Handle backups, recovery, and disaster management
+
+Ensure security, availability, and reliability of the database
+
+Resolve technical issues and optimize storage
+
+Focus: Running, protecting, and maintaining the database.
+
+5. Application Developer
+
+The Application Developer builds the software that interacts with the database.
+Key Responsibilities:
+
+Develop front-end and back-end applications
+
+Connect applications to the database using APIs or ORM tools
+
+Implement logic for data entry, processing, and retrieval
+
+Ensure smooth user experience and correct data flow
+
+Test and debug database-related functions
+
+Focus: Creating applications that use the database.
+
+6. BI (Business Intelligence) Developer
+
+A BI Developer transforms raw data into meaningful insights.
+Key Responsibilities:
+
+Build dashboards, reports, and visualizations
+
+Create ETL (Extract, Transform, Load) processes
+
+Work with data warehouses and analytical databases
+
+Analyze trends and support data-driven decision-making
+
+Optimize reporting performance and data models
+
+Focus: Turning data into insights and decisions.
