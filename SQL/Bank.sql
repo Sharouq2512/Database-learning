@@ -185,4 +185,90 @@ UPDATE Customer
 SET PhoneNo = 0
 WHERE PhoneNo IS NULL;
 
---Delete closed accounts. 
+ 
+
+--------------------------------------------------------------------
+--JOIN Queries
+--1. Display branch ID, name, and the name of the employee who manages it.
+SELECT b.B_Id, b.BAddress, e.EName AS ManagerName
+FROM Branch b
+JOIN Employee e
+ON b.B_Id = e.B_Id
+WHERE e.Position = 'Manager';
+
+--2. Display branch names and the accounts opened under each.
+SELECT b.BAddress, a.A_No
+FROM Branch b
+JOIN Employee e ON b.B_Id = e.B_Id
+JOIN Loans l ON e.E_Id = l.E_Id
+JOIN Customer c ON l.C_Id = c.C_Id
+JOIN Account a ON c.C_Id = a.C_Id;
+
+--3. Display full customer details along with their loans.
+SELECT c.*, l.L_Id, l.LType, l.Amount, l.Issue_D
+FROM Customer c
+JOIN Loans l
+ON c.C_Id = l.C_Id;
+--4. Display loan records where the loan office is in 'Alexandria' or 'Giza'.
+SELECT l.*
+FROM Loans l
+JOIN Employee e ON l.E_Id = e.E_Id
+JOIN Branch b ON e.B_Id = b.B_Id
+WHERE b.BAddress IN ('Alexandria', 'Giza');
+
+--5. Display account data where the type starts with "S" (e.g., "Savings").
+SELECT *
+FROM Account
+WHERE Saving IS NOT NULL;
+
+--6. List customers with accounts having balances between 20,000 and 50,000.
+SELECT c.CName, a.Balance
+FROM Customer c
+JOIN Account a
+ON c.C_Id = a.C_Id
+WHERE a.Balance BETWEEN 20000 AND 50000;
+
+--7. Retrieve customer names who borrowed more than 100,000 LE from 'Cairo Main Branch'.
+SELECT DISTINCT c.CName
+FROM Customer c
+JOIN Loans l ON c.C_Id = l.C_Id
+JOIN Employee e ON l.E_Id = e.E_Id
+JOIN Branch b ON e.B_Id = b.B_Id
+WHERE l.Amount > 100000
+AND b.BAddress = 'Cairo Main Branch';
+
+--8. Find all customers assisted by employee "Amira Khaled".
+SELECT DISTINCT c.CName
+FROM Customer c
+JOIN Loans l ON c.C_Id = l.C_Id
+JOIN Employee e ON l.E_Id = e.E_Id
+WHERE e.EName = 'Amira Khaled';
+
+--9. Display each customer’s name and the accounts they hold, sorted by account type.
+SELECT c.CName, a.A_No, 
+       CASE 
+           WHEN a.Saving IS NOT NULL THEN 'Saving'
+           WHEN a.Checking IS NOT NULL THEN 'Checking'
+       END AS AccountType
+FROM Customer c
+JOIN Account a
+ON c.C_Id = a.C_Id
+ORDER BY AccountType;
+
+--10. For each loan issued in Cairo, show loan ID, customer name, employee handling it, and branch name.
+SELECT l.L_Id, c.CName, e.EName, b.BAddress
+FROM Loans l
+JOIN Customer c ON l.C_Id = c.C_Id
+JOIN Employee e ON l.E_Id = e.E_Id
+JOIN Branch b ON e.B_Id = b.B_Id
+WHERE b.BAddress = 'Cairo';
+
+--11. Display all employees who manage any branch.
+SELECT DISTINCT e.EName
+FROM Employee e
+WHERE e.Position = 'Manager';
+--12. Display all customers and their transactions, even if some customers have no transactions yet.
+SELECT c.CName, t.T_Id, t.Amount, t.TDate
+FROM Customer c
+LEFT JOIN Account a ON c.C_Id = a.C_Id
+LEFT JOIN Transactions t ON a.A_No = t.A_No;

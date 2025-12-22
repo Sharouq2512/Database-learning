@@ -173,10 +173,7 @@ JOIN Airplane_Type AT ON A.TypeId = AT.TypeId
 WHERE AT.TypeName LIKE '%Boeing%';
 ------------------------------------------------------------------------
 --DML 
---Insert a new flight leg departing from 'CAI' to 'DXB' on 2025-06-10. 
 
-
---Insert a customer with NULL contact number.
 
 --Reduce available seats of your inserted flight leg by 5.
 UPDATE Leg_Instance
@@ -185,13 +182,79 @@ WHERE Leg_Id = 1;
 
 
 
-
---Increase available seats by 10 for all domestic flights.
-
-
 --Update airplane seat capacity by +20 where capacity < 150. 
 UPDATE Leg_Instance
 SET No_Of_Av_Seat = No_Of_Av_Seat +20
 WHERE No_Of_Av_Seat >150;
 
---Delete canceled flight legs.
+------------------------------------------------------------------------------
+--join
+
+--Display each flight leg's ID, schedule, and the name of the airplane assigned to it.
+select Flight_Id ,Scheduled_Dep_Time ,Scheduled_Arr_Time , TypeName
+from Flight_Leg F, Airplane_Type A
+where F.Airport_Code= A.Airport_Code
+
+--Display all flight numbers and the names of the departure and arrival airports.
+select Flight_Id ,City
+from Airport A,Flight_Leg F
+where A.Airport_Code= F.Airport_Code
+
+--Display all reservation data with the name and phone of the customer who made each booking.
+select R.* , LDate, Departure_Time , Arrival_Time
+from Reservation R , Leg_Instance L
+where R.Leg_Id = L.Leg_Id
+
+--Display IDs and locations of flights departing from 'CAI' or 'DXB'.
+select Flight_Id , Airport_Code
+from Flight_Leg
+where Airport_Code like 'CAI' or Airport_Code like 'DXB'
+
+--Display full data of flights whose names start with 'E'.
+select * from Flight_Fears where Airline like 'E%'
+
+--List customers who have bookings with total payment between 3000 and 5000.
+select Cus_Id , CusName, Amount 
+from
+Reservation R inner join  Leg_Instance L
+on R.Leg_Id= L.Leg_Id
+inner join Flight_Leg F
+on L.Leg_No= F.Leg_No
+inner join Fares FA
+on F.Flight_Id=FA.Flight_Id
+where FA.Amount between 150 and 350
+
+--Retrieve all passengers on 'Flight 110' who booked more than 2 seats.
+select R.*
+from Airplane A inner join Leg_Instance L
+on A.Airplane_Id =L.Airplane_Id
+inner join Reservation R
+on L.Leg_Id =R. Leg_Id
+where Seat_No >=20
+
+--Display each passenger’s name and the flights they booked, ordered by flight date.
+select CusName , TypeName , LDate
+from Reservation R inner join Leg_Instance L
+on R.Leg_Id=L.Leg_Id
+inner join Airplane A
+on L.Airplane_Id= A.Airplane_Id
+inner join Airplane_Type T
+on A.TypeId = T.TypeId
+order by LDate
+
+--For each flight departing from 'Cairo', display the flight number, departure time, and airline name.
+select F.Flight_Id, Scheduled_Dep_Time, Airline
+from Flight_Leg F,Flight_Fears
+where Airport_Code like 'MCT'
+
+
+
+select * from Airport
+select * from Fares
+select * from Flight_Leg
+select * from Flight_Fears
+
+select * from Reservation
+select * from Airplane_Type
+select * from Airplane
+select * from Leg_Instance

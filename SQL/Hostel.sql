@@ -199,3 +199,77 @@ WHERE RType = 'Suite';
 --Delete bookings with status 'Cancelled'. 
 DELETE FROM Booking
 WHERE Status = 'Cancelled';
+
+-----------------------------------------------------------------
+--Join
+--Display hotel ID, name, and the name of its manager.
+SELECT b.Branch_Id, b.BName, s.SName AS Manager_Name
+FROM Branches b
+JOIN Staff s ON b.Branch_Id = s.Branch_Id
+WHERE s.J_Title = 'Manager';
+
+--Display hotel names and the rooms available under them.
+SELECT b.BName, r.R_No, r.RType, r.Rate
+FROM Branches b
+JOIN Rooms r ON b.Branch_Id = r.Branch_Id;
+
+--Display guest data along with the bookings they made.
+SELECT c.Cus_Id, c.CName, c.Phone, c.Email,
+       bk.Book_Id, bk.Check_in, bk.Check_out
+FROM Customer c
+LEFT JOIN Booking bk ON c.Cus_Id = bk.Cus_Id;
+
+--Display bookings for hotels in 'Hurghada' or 'Sharm El Sheikh'.
+SELECT bk.Book_Id, b.BName, b.Location, bk.Check_in, bk.Check_out
+FROM Booking bk
+JOIN Booking_Rooms br ON bk.Book_Id = br.Book_Id
+JOIN Rooms r ON br.R_No = r.R_No
+JOIN Branches b ON r.Branch_Id = b.Branch_Id
+WHERE b.Location IN ('Hurghada', 'Sharm El Sheikh');
+select * from Branches
+
+--Display all room records where room type starts with "S" (e.g., "Suite", "Single").
+SELECT *
+FROM Rooms
+WHERE RType LIKE 'S%';
+
+--List guests who booked rooms priced between 1500 and 2500 LE.
+SELECT DISTINCT c.CName
+FROM Customer c
+JOIN Booking bk ON c.Cus_Id = bk.Cus_Id
+JOIN Booking_Rooms br ON bk.Book_Id = br.Book_Id
+JOIN Rooms r ON br.R_No = r.R_No
+WHERE r.Rate BETWEEN 50 AND 100;
+--Retrieve guest names who have bookings marked as 'Confirmed' in hotel "Hilton Downtown".
+SELECT DISTINCT c.CName
+FROM Customer c
+JOIN Booking bk ON c.Cus_Id = bk.Cus_Id
+JOIN Booking_Rooms br ON bk.Book_Id = br.Book_Id
+JOIN Rooms r ON br.R_No = r.R_No
+JOIN Branches b ON r.Branch_Id = b.Branch_Id
+
+--Find guests whose bookings were handled by staff member "Mona Ali".
+SELECT DISTINCT c.CName
+FROM Customer c
+JOIN Booking bk ON c.Cus_Id = bk.Cus_Id
+JOIN Staff_Booking sb ON bk.Book_Id = sb.Book_Id
+JOIN Staff s ON sb.S_Id = s.S_Id
+WHERE s.SName = 'Mona Ali';
+--Display each guest’s name and the rooms they booked, ordered by room type.
+SELECT c.CName, r.R_No, r.RType
+FROM Customer c
+JOIN Booking bk ON c.Cus_Id = bk.Cus_Id
+JOIN Booking_Rooms br ON bk.Book_Id = br.Book_Id
+JOIN Rooms r ON br.R_No = r.R_No
+ORDER BY r.RType;
+--For each hotel in 'Cairo', display hotel ID, name, manager name, and contact info.
+SELECT b.Branch_Id, b.BName,
+       s.SName AS Manager_Name
+FROM Branches b
+JOIN Staff s ON b.Branch_Id = s.Branch_Id
+WHERE b.Location = 'Cairo'
+  AND s.J_Title = 'Manager';
+--Display all staff members who hold 'Manager' positions.
+SELECT *
+FROM Staff
+WHERE J_Title = 'Manager';
