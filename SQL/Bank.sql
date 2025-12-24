@@ -261,8 +261,8 @@ FROM Loans l
 JOIN Customer c ON l.C_Id = c.C_Id
 JOIN Employee e ON l.E_Id = e.E_Id
 JOIN Branch b ON e.B_Id = b.B_Id
-WHERE b.BAddress = 'Cairo';
-
+WHERE b.BAddress = '123 Main St, Muscat';
+select * from Branch
 --11. Display all employees who manage any branch.
 SELECT DISTINCT e.EName
 FROM Employee e
